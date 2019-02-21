@@ -1,0 +1,138 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "coffee": {
+      "root": "apps/coffee/",
+      "sourceRoot": "apps/coffee/src",
+      "projectType": "application",
+      "prefix": "provenir",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/coffee",
+            "index": "apps/coffee/src/index.html",
+            "main": "apps/coffee/src/main.ts",
+            "polyfills": "apps/coffee/src/polyfills.ts",
+            "tsConfig": "apps/coffee/tsconfig.app.json",
+            "assets": ["apps/coffee/src/favicon.ico", "apps/coffee/src/assets"],
+            "styles": ["apps/coffee/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/coffee/src/environments/environment.ts",
+                  "with": "apps/coffee/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "coffee:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "coffee:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "coffee:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/coffee/tsconfig.app.json",
+              "apps/coffee/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/coffee/jest.config.js",
+            "tsConfig": "apps/coffee/tsconfig.spec.json",
+            "setupFile": "apps/coffee/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "coffee-e2e": {
+      "root": "apps/coffee-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/coffee-e2e/cypress.json",
+            "tsConfig": "apps/coffee-e2e/tsconfig.e2e.json",
+            "devServerTarget": "coffee:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "coffee:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/coffee-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/schematics:application": {
+      "style": "scss"
+    },
+    "@nrwl/schematics:library": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "coffee"
+}
