@@ -1,0 +1,32 @@
+<div class="page-centered">
+    <form [formGroup]="loginForm" class="flex-list">
+        <mdl-textfield
+            label="Username"
+            name="username"
+            type="text"
+            formControlName="username"
+            floating-label
+            pattern="^[a-zA-Z0-9._]+$"
+            error-msg="Please use valid characters">
+        </mdl-textfield>
+        <mdl-textfield
+            label="Password"
+            name="password"
+            type="password"
+            formControlName="password"
+            floating-label>
+        </mdl-textfield>
+        <p>
+            The password is the same as the username
+        </p>
+        <button
+            mdl-button
+            (click)="login()"
+            [disabled]="!loginForm.valid"
+            mdl-button-type="raised"
+            mdl-ripple
+            mdl-colored="primary">
+                Submit
+        </button>
+    </form>
+</div>
