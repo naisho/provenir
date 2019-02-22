@@ -13,23 +13,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Good to Have
 [✓] Routing
-[ ] Lazy loading
-[ ] Flexible design
+[ ] Lazy loading (Easy to add)
+[✓] Flexible design (probably overabstracted)
 [✓] Modal
+[✓] Responsive
 
 ### Pages
 [✓] Login
 [✓] Coffee Cup list
 [✓] Add/Edit Coffee Cup
-[ ] Coffee Cup details
+[✓] Coffee Cup details
 
 ### Bonus
 [ ] Images
-[...] Data service abstraction (easy to connect to api)
 [✓] Redux
 [✓] Nx
 
 ### Out of Scope
+[ ] Data service abstraction (easy to connect to api)
 [ ] Login/Data storage API (dynamoDB/API Gateway)
 [ ] Login security (JWT)
 

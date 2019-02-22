@@ -3,7 +3,17 @@ mdl-list-item:hover {
 }
 
 .fab {
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     right: 1rem;
+}
+
+mdl-list-item-sub-title {
+    overflow-x: auto;
+    text-overflow: ellipsis;
+}
+
+.mdl-dialog__actions {
+    padding-left: 8px;
+    flex-wrap: nowrap;
 }

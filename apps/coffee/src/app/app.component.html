@@ -1,16 +1,24 @@
-<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
+<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed #layout>
     <mdl-layout-header>
         <mdl-layout-header-row>
             <mdl-layout-title>Provenir-Coffee</mdl-layout-title>
             <mdl-layout-spacer></mdl-layout-spacer>
-            <nav class="mdl-navigation" *ngIf="isLoggedIn">
-                <a class="mdl-navigation__link" routerLink="/login">Change User</a>
-                <a class="mdl-navigation__link" routerLink="/coffee">Item List</a>
-                <a class="mdl-navigation__link" (click)=logout()>Log Out</a>
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <ng-container *ngTemplateOutlet="links"></ng-container>
             </nav>
         </mdl-layout-header-row>
     </mdl-layout-header>
+    <mdl-layout-drawer *ngIf="isLoggedIn">
+        <nav class="mdl-navigation">
+            <ng-container *ngTemplateOutlet="links"></ng-container>
+        </nav>
+    </mdl-layout-drawer>
     <mdl-layout-content>
         <router-outlet></router-outlet>
     </mdl-layout-content>
 </mdl-layout>
+<ng-template #links>
+    <a class="mdl-navigation__link" routerLink="/login" (click)="layout.closeDrawer()">Change User</a>
+    <a class="mdl-navigation__link" routerLink="/coffee" (click)="layout.closeDrawer()">Item List</a>
+    <a class="mdl-navigation__link" (click)="logout(); layout.closeDrawer()">Log Out</a>
+</ng-template>

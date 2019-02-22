@@ -34,7 +34,12 @@ export class ItemListComponent implements OnInit {
     show(data: any, mouseEvent: MouseEvent) {
         const config = {
             clickOutsideToClose: true,
-            styles: {'width': '500px'},
+            styles: {
+                'min-width': '300px',
+                'max-width': '80%',
+                'max-height': '80%',
+                'overflow-y': 'scroll',
+            },
             isModal: true,
             openFrom: mouseEvent,
             enterTransitionDuration: 400,

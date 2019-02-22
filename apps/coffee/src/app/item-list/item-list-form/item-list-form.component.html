@@ -1,15 +1,18 @@
 <form [formGroup]="itemForm">
     <h3 class="mdl-dialog__title">Item Details</h3>
     <div class="mdl-dialog__content">
-        <mdl-textfield type="text" label="ID" formControlName="id" floating-label></mdl-textfield><br />
-        <mdl-select formControlName="icon" placeholder="Icon">
-            <mdl-option *ngFor="let icon of icons" [value]="icon">{{ icon }}</mdl-option>
-        </mdl-select>        
-        <mdl-textfield type="text" label="Name" formControlName="name" floating-label></mdl-textfield><br />
-        <mdl-textfield type="text" label="Description" formControlName="description" floating-label></mdl-textfield><br />
-        <mdl-textfield type="text" label="Cup" formControlName="cup" floating-label></mdl-textfield><br />
-        <mdl-textfield type="text" label="Flavor" formControlName="flavor" floating-label></mdl-textfield><br />
-        <mdl-textfield type="text" label="Topping" formControlName="topping" floating-label></mdl-textfield><br />
+        <mdl-textfield type="number" label="ID" formControlName="id" floating-label></mdl-textfield>
+        <mdl-select formControlName="icon" label="Icon" style="width: 100%;" floating-label>
+            <mdl-option *ngFor="let icon of icons" [value]="icon">
+                <mdl-icon>{{ icon }}</mdl-icon>
+                <!-- <span>{{ icon }}</span> -->
+            </mdl-option>
+        </mdl-select>
+        <mdl-textfield type="text" label="Name" formControlName="name" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Description" rows="2" maxrows="2" formControlName="description" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Cup" formControlName="cup" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Flavor" formControlName="flavor" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Topping" formControlName="topping" floating-label></mdl-textfield>
     </div>
     <div class="mdl-dialog__actions">
         <button mdl-button
@@ -25,21 +28,17 @@
             mdl-ripple
             type="button"
             (click)="cancel()"
-            [disabled]="!itemForm.valid"
             mdl-button-type="raised">
                 Cancel
         </button>
-        <ng-container>
-            <button mdl-button
-                mdl-ripple
-                type="button"
-                *ngIf="!isNew"
-                (click)="delete()"
-                [disabled]="!itemForm.valid"
-                mdl-button-type="raised"
-                mdl-colored="accent">
-                    Delete
-            </button>
-        </ng-container>
+        <button mdl-button
+            mdl-ripple
+            type="button"
+            *ngIf="!isNew"
+            (click)="delete()"
+            mdl-button-type="raised"
+            mdl-colored="accent">
+                Delete
+        </button>
     </div>
 </form>
