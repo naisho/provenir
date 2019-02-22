@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from './login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'provenir-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'coffee';
+    constructor(private loginService: LoginService, private router: Router) { }
+    title = 'coffee';
+
+    isLoggedIn = this.loginService.isLoggedIn();
+    
+    logout() {
+        this.loginService.logout();
+        this.router.navigate(['login']);
+    }
 }

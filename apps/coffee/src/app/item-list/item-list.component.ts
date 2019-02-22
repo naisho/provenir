@@ -21,9 +21,9 @@ export class ItemListComponent implements OnInit {
     ngOnInit() {
         if (!localStorage.getItem('provenir-coffee')) {
             const initialData: CupOfCoffee[] = [
-                new CupOfCoffee(1, 'regular coffee', 'coffee that is regular', 'round', 'regular', ''),
-                new CupOfCoffee(2, 'weird decaf', 'decaf that is weird', 'square', 'decaf', 'cream'),
-                new CupOfCoffee(3, 'impossible coffee', 'coffee that is impossible', 'cone', 'chocolate', 'bongocat')
+                new CupOfCoffee(1, 'local_cafe', 'regular coffee', 'coffee that is regular', 'round', 'regular', ''),
+                new CupOfCoffee(2, 'local_cafe', 'weird decaf', 'decaf that is weird', 'square', 'decaf', 'cream'),
+                new CupOfCoffee(3, 'local_cafe', 'impossible coffee', 'coffee that is impossible', 'cone', 'chocolate', 'bongocat')
             ];
             console.log(initialData);
             localStorage.setItem('provenir-coffee', JSON.stringify(initialData));
@@ -34,7 +34,7 @@ export class ItemListComponent implements OnInit {
     show(data: any, mouseEvent: MouseEvent) {
         const config = {
             clickOutsideToClose: true,
-            // styles: {'width': '300px'},
+            styles: {'width': '500px'},
             isModal: true,
             openFrom: mouseEvent,
             enterTransitionDuration: 400,

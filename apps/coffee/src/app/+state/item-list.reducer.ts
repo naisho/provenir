@@ -34,7 +34,12 @@ export function itemListReducer(
     action: ItemListAction
 ): ItemListState {
     switch (action.type) {
+        case ItemListActionTypes.AddItemSuccess:
+        case ItemListActionTypes.UpdateItemSuccess:
+        case ItemListActionTypes.DeleteItemSuccess:
         case ItemListActionTypes.ItemListLoaded: {
+            // safer to update state each time since
+            // LocalStorage can be easily manipulated
             state = {
                 ...state,
                 list: action.payload,

@@ -3,9 +3,10 @@
         <mdl-layout-header-row>
             <mdl-layout-title>Provenir-Coffee</mdl-layout-title>
             <mdl-layout-spacer></mdl-layout-spacer>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" routerLink="/login">Login</a>
+            <nav class="mdl-navigation" *ngIf="isLoggedIn">
+                <a class="mdl-navigation__link" routerLink="/login">Change User</a>
                 <a class="mdl-navigation__link" routerLink="/coffee">Item List</a>
+                <a class="mdl-navigation__link" (click)=logout()>Log Out</a>
             </nav>
         </mdl-layout-header-row>
     </mdl-layout-header>

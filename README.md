@@ -1,6 +1,37 @@
-# Provenir
+# ProvenirCoffee
+`Sometimes you want coffee, but sometimes you just want to test someone on their coding skills`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
+
+## Interpretation of Requirements
+
+### Required
+[✓] Angular
+[✓] Material Design Lite
+[✓] Reactive Forms
+[✓] "Refresh the page, I still have my cups"
+
+### Good to Have
+[✓] Routing
+[ ] Lazy loading
+[ ] Flexible design
+[✓] Modal
+
+### Pages
+[✓] Login
+[✓] Coffee Cup list
+[✓] Add/Edit Coffee Cup
+[ ] Coffee Cup details
+
+### Bonus
+[ ] Images
+[...] Data service abstraction (easy to connect to api)
+[✓] Redux
+[✓] Nx
+
+### Out of Scope
+[ ] Login/Data storage API (dynamoDB/API Gateway)
+[ ] Login security (JWT)
 
 ## Nrwl Extensions for Angular (Nx)
 

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { LoginModule } from './login/login.module';
 import { ItemListModule } from './item-list/item-list.module';
 import { MdlModule } from '@angular-mdl/core';
+import { MdlSelectModule } from '@angular-mdl/select';
 import { loginRoutes } from './login/login-routing.module';
 import { itemListRoutes } from './item-list/item-list-routing.module';
 import { LoginGuard } from './login/login.guard';
@@ -28,6 +29,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
     imports: [
         BrowserModule,
         MdlModule,
+        MdlSelectModule,
         LoginModule,
         ItemListModule,
         NxModule.forRoot(),

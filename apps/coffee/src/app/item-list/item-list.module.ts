@@ -6,11 +6,13 @@ import { ItemListComponent } from './item-list.component';
 import { ItemListFormComponent } from './item-list-form/item-list-form.component';
 import { MdlModule } from '@angular-mdl/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MdlSelectModule } from '@angular-mdl/select';
 
 @NgModule({
     imports: [
         CommonModule,
         MdlModule,
+        MdlSelectModule,
         FormsModule,
         ReactiveFormsModule,
         ItemListRoutingModule

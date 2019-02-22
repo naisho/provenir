@@ -1,14 +1,24 @@
 <mdl-list>
-    <mdl-list-item lines="3" *ngFor="let coffee of itemList$ | async">
+    <mdl-list-item
+        *ngFor="let item of itemList$ | async"
+        (click)="show(item, $event)"
+        lines="2">
         <mdl-list-item-primary-content>
-            <mdl-icon mdl-list-item-icon>local_cafe</mdl-icon>
-            <span>{{ coffee.name }}</span>
-            <mdl-list-item-text-body>
-                {{ coffee.description }}
-            </mdl-list-item-text-body>
+            <mdl-icon mdl-list-item-icon>{{ item.icon }}</mdl-icon>
+            <span>{{ item.name }}</span>
+            <mdl-list-item-sub-title>{{ item.description }}</mdl-list-item-sub-title>
         </mdl-list-item-primary-content>
         <mdl-list-item-secondary-content>
-            <mdl-icon (click)="show(coffee, $event)">edit</mdl-icon>
+            <!-- <mdl-icon (click)="show(item, $event)">edit</mdl-icon> -->
+            <!-- <mdl-icon (click)="delete(item, $event)">delete</mdl-icon> -->
         </mdl-list-item-secondary-content>
     </mdl-list-item>
 </mdl-list>
+<mdl-button
+    class="fab"
+    mdl-button-type="fab"
+    (click)="show(null, $event)"
+    mdl-colored="primary"
+    mdl-ripple>
+        <mdl-icon>add</mdl-icon>
+</mdl-button>    

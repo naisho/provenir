@@ -19,6 +19,11 @@ export class LoginService {
         return this.validateCredentials(credentials);
     }
 
+    logout() {
+        sessionStorage.removeItem('username');
+        sessionStorage.removeItem('password');
+    }
+
     private validateCredentials(credentials: Credentials): boolean {
         return credentials.username && credentials.password && credentials.username === credentials.password;
     }
