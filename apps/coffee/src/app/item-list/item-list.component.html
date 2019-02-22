@@ -1,0 +1,14 @@
+<mdl-list>
+    <mdl-list-item lines="3" *ngFor="let coffee of itemList$ | async">
+        <mdl-list-item-primary-content>
+            <mdl-icon mdl-list-item-icon>local_cafe</mdl-icon>
+            <span>{{ coffee.name }}</span>
+            <mdl-list-item-text-body>
+                {{ coffee.description }}
+            </mdl-list-item-text-body>
+        </mdl-list-item-primary-content>
+        <mdl-list-item-secondary-content>
+            <mdl-icon (click)="show(coffee, $event)">edit</mdl-icon>
+        </mdl-list-item-secondary-content>
+    </mdl-list-item>
+</mdl-list>

@@ -1,0 +1,15 @@
+<form [formGroup]="itemForm">
+    <h3 class="mdl-dialog__title">Item Details</h3>
+    <div class="mdl-dialog__content">
+        <mdl-textfield type="text" label="ID" formControlName="id" floating-label></mdl-textfield><br />
+        <mdl-textfield type="text" label="Name" formControlName="name" floating-label></mdl-textfield><br />
+        <mdl-textfield type="text" label="Description" formControlName="description" floating-label></mdl-textfield><br />
+        <mdl-textfield type="text" label="Cup" formControlName="cup" floating-label></mdl-textfield><br />
+        <mdl-textfield type="text" label="Flavor" formControlName="flavor" floating-label></mdl-textfield><br />
+        <mdl-textfield type="text" label="Topping" formControlName="topping" floating-label></mdl-textfield><br />
+    </div>
+    <div class="mdl-dialog__actions">
+        <button type="button" mdl-button (click)="save()" [disabled]="!itemForm.valid" mdl-button-type="raised" mdl-colored="primary"
+      mdl-ripple>Save</button>
+    </div>
+</form>
