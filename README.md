@@ -78,3 +78,6 @@ I also used angular2-mdl (https://github.com/mseemann/angular2-mdl), which is an
 
 #### Storage
 For persistent storage, I used LocalStorage and SessionStorage because they are globally available, so it's easy to use.  I didn't use a mock DB because I am not familiar with any and strays a little too far from original requirements.
+
+#### Testing
+Using too many third party plugins reduced development time, but it made the testing aspect even more difficult than actual development process.  There were a lot of difficulties, especially mocking storage which touches a lot of areas.  Tests were not included because they were incomplete, relied on more third party libraries, and for a short demo is not required, although it would have been nice to have better TDD skills.
