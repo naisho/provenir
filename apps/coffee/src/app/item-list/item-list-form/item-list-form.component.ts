@@ -29,6 +29,9 @@ export class ItemListFormComponent implements OnInit {
     itemForm: FormGroup; 
 
     icons = ['local_cafe', 'hot_tub', 'cake', 'whatshot', 'star_border', 'ac_unit'];
+    cups = ['regular', 'vacuum insulated', `world's best dog`, 'ice cream cone', 'beer mug'];
+    flavors = ['regular', 'french vanilla', 'columbian', 'strawberry', 'rum'];
+    toppings = ['none', 'whipped cream', 'salty foam', 'sprinkles'];
 
     ngOnInit() {
     }

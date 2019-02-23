@@ -9,10 +9,16 @@
             </mdl-option>
         </mdl-select>
         <mdl-textfield type="text" label="Name" formControlName="name" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Description" rows="2" maxrows="2" formControlName="description" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Cup" formControlName="cup" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Flavor" formControlName="flavor" floating-label></mdl-textfield>
-        <mdl-textfield type="text" label="Topping" formControlName="topping" floating-label></mdl-textfield>
+        <mdl-textfield type="text" label="Description" rows="1" maxrows="2" formControlName="description" floating-label></mdl-textfield>
+        <mdl-select #cupSelect formControlName="cup" label="Cup" autocomplete="true" style="width: 100%;" floating-label>
+            <mdl-option *ngFor="let c of cups" [value]="c">{{ c }}</mdl-option>
+        </mdl-select>
+        <mdl-select #flavorSelect formControlName="flavor" label="Flavor" autocomplete="true" style="width: 100%;" floating-label>
+            <mdl-option *ngFor="let f of flavors" [value]="f">{{ f }}</mdl-option>
+        </mdl-select>
+        <mdl-select #toppingSelect formControlName="topping" label="Topping" autocomplete="true" style="width: 100%;" floating-label>
+            <mdl-option *ngFor="let t of toppings" [value]="t">{{ t }}</mdl-option>
+        </mdl-select>
     </div>
     <div class="mdl-dialog__actions">
         <button mdl-button
