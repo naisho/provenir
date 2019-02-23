@@ -27,7 +27,7 @@ export class ItemListEffects {
         {
             run: (action: LoadItemList, state: ItemListPartialState) => {
                 const storage = localStorage.getItem('provenir-coffee');
-                return new ItemListLoaded(JSON.parse(storage));
+                return storage ? new ItemListLoaded(JSON.parse(storage)) : new ItemListLoaded([]);
             },
 
             onError: (action: LoadItemList, error) => {
