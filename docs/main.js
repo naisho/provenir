@@ -201,7 +201,7 @@ var ItemListEffects = /** @class */ (function () {
         this.loadItemList$ = this.dataPersistence.pessimisticUpdate(_item_list_actions__WEBPACK_IMPORTED_MODULE_4__["ItemListActionTypes"].LoadItemList, {
             run: function (action, state) {
                 var storage = localStorage.getItem('provenir-coffee');
-                return new _item_list_actions__WEBPACK_IMPORTED_MODULE_4__["ItemListLoaded"](JSON.parse(storage));
+                return storage ? new _item_list_actions__WEBPACK_IMPORTED_MODULE_4__["ItemListLoaded"](JSON.parse(storage)) : new _item_list_actions__WEBPACK_IMPORTED_MODULE_4__["ItemListLoaded"]([]);
             },
             onError: function (action, error) {
                 // snackbar(error);
@@ -360,7 +360,7 @@ var itemListQuery = {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed #layout>\n    <mdl-layout-header>\n        <mdl-layout-header-row>\n            <mdl-layout-title>Provenir-Coffee</mdl-layout-title>\n            <mdl-layout-spacer></mdl-layout-spacer>\n            <nav class=\"mdl-navigation mdl-layout--large-screen-only\">\n                <ng-container *ngTemplateOutlet=\"links\"></ng-container>\n            </nav>\n        </mdl-layout-header-row>\n    </mdl-layout-header>\n    <mdl-layout-drawer *ngIf=\"isLoggedIn\">\n        <nav class=\"mdl-navigation\">\n            <ng-container *ngTemplateOutlet=\"links\"></ng-container>\n        </nav>\n    </mdl-layout-drawer>\n    <mdl-layout-content>\n        <router-outlet></router-outlet>\n    </mdl-layout-content>\n</mdl-layout>\n<ng-template #links>\n    <a class=\"mdl-navigation__link\" routerLink=\"/login\" (click)=\"layout.closeDrawer()\">Change User</a>\n    <a class=\"mdl-navigation__link\" routerLink=\"/coffee\" (click)=\"layout.closeDrawer()\">Item List</a>\n    <a class=\"mdl-navigation__link\" (click)=\"logout(); layout.closeDrawer()\">Log Out</a>\n</ng-template>"
+module.exports = "<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed #layout>\n    <mdl-layout-header>\n        <mdl-layout-header-row>\n            <mdl-layout-title>Provenir-Coffee</mdl-layout-title>\n            <mdl-layout-spacer></mdl-layout-spacer>\n            <nav class=\"mdl-navigation mdl-layout--large-screen-only\">\n                <ng-container *ngTemplateOutlet=\"links\"></ng-container>\n            </nav>\n        </mdl-layout-header-row>\n    </mdl-layout-header>\n    <mdl-layout-drawer>\n        <nav class=\"mdl-navigation\">\n            <ng-container *ngTemplateOutlet=\"links\"></ng-container>\n        </nav>\n    </mdl-layout-drawer>\n    <mdl-layout-content>\n        <router-outlet></router-outlet>\n    </mdl-layout-content>\n</mdl-layout>\n<ng-template #links>\n    <a class=\"mdl-navigation__link\" routerLink=\"/login\" (click)=\"layout.closeDrawer()\">Change User</a>\n    <a class=\"mdl-navigation__link\" routerLink=\"/coffee\" (click)=\"layout.closeDrawer()\">Item List</a>\n    <a class=\"mdl-navigation__link\" (click)=\"logout(); layout.closeDrawer()\">Log Out</a>\n</ng-template>"
 
 /***/ }),
 
@@ -704,23 +704,22 @@ var ItemListComponent = /** @class */ (function () {
         this.modal = modal;
         this.store = store;
         this.itemList$ = this.store.select(_state_item_list_selectors__WEBPACK_IMPORTED_MODULE_6__["itemListQuery"].getAllItemList);
+        this.sampleData = [
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](1, 'local_cafe', 'Regular Coffee', 'coffee that is regular', 'regular', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](2, 'whatshot', 'Fancy Coffee', 'like regular coffee but for fancy people', 'vacuum insulated', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](3, 'star_border', 'Favorite Coffee', 'coffee for people that like sweet drinks', 'regular', 'french vanilla', 'salty foam'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](4, 'ac_unit', 'Ice Cream', 'I thought this was supposed to be coffee', 'ice cream cone', 'strawberry', 'sprinkles'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](5, 'hot_tub', 'uhhh', 'coffee but not for normal people', "world's best dog", 'rum', 'sprinkles'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](6, 'local_cafe', 'Filler Coffee 1', "it's free real estate", 'regular', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](7, 'local_cafe', 'Filler Coffee 2', "it's free real estate", 'regular', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](8, 'local_cafe', 'Filler Coffee 3', "it's free real estate", 'regular', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](9, 'local_cafe', 'Filler Coffee 4', "it's free real estate", 'regular', 'regular', 'none'),
+            new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](99, 'cake', 'The Last Coffee', 'this coffee is at the bottom of the list and probably covered by the button', 'regular', 'regular', 'sprinkles'),
+        ];
     }
     ItemListComponent.prototype.ngOnInit = function () {
         if (!localStorage.getItem('provenir-coffee')) {
-            var initialData = [
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](1, 'local_cafe', 'Regular Coffee', 'coffee that is regular', 'regular', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](2, 'whatshot', 'Fancy Coffee', 'like regular coffee but for fancy people', 'vacuum insulated', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](3, 'star_border', 'Favorite Coffee', 'coffee for people that like sweet drinks', 'regular', 'french vanilla', 'salty foam'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](4, 'ac_unit', 'Ice Cream', 'I thought this was supposed to be coffee', 'ice cream cone', 'strawberry', 'sprinkles'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](5, 'hot_tub', 'uhhh', 'coffee but not for normal people', "world's best dog", 'rum', 'sprinkles'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](6, 'local_cafe', 'Filler Coffee 1', "it's free real estate", 'regular', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](7, 'local_cafe', 'Filler Coffee 2', "it's free real estate", 'regular', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](8, 'local_cafe', 'Filler Coffee 3', "it's free real estate", 'regular', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](9, 'local_cafe', 'Filler Coffee 4', "it's free real estate", 'regular', 'regular', 'none'),
-                new _models_cup_of_coffee__WEBPACK_IMPORTED_MODULE_7__["CupOfCoffee"](99, 'cake', 'The Last Coffee', 'this coffee is at the bottom of the list and probably covered by the button', 'regular', 'regular', 'sprinkles'),
-            ];
-            console.log(initialData);
-            localStorage.setItem('provenir-coffee', JSON.stringify(initialData));
+            localStorage.setItem('provenir-coffee', JSON.stringify(this.sampleData));
         }
         this.store.dispatch(new _state_item_list_actions__WEBPACK_IMPORTED_MODULE_5__["fromItemListActions"].LoadItemList);
     };
@@ -731,7 +730,7 @@ var ItemListComponent = /** @class */ (function () {
                 'min-width': '300px',
                 'max-width': '80%',
                 'max-height': '80%',
-                'overflow-y': 'scroll',
+                'overflow-y': 'auto',
             },
             isModal: true,
             openFrom: mouseEvent,
