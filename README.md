@@ -34,43 +34,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 [ ] Login/Data storage API (dynamoDB/API Gateway)
 [ ] Login security (JWT)
 
-## Nrwl Extensions for Angular (Nx)
+### Would have liked to add/fix
+[ ] @angular-mdl/select dropdown display value
+[ ] Use a mock SQL database to auto-generate IDs and store cup/flavor types instead of hardcoding
+[ ] Probably should have maintained login status in the state
+[ ] Separate item details page with some fancy pictures
+[ ] Properly abstract localStorage
 
-<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
-
-Nx is an open source toolkit for enterprise Angular applications.
-
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
-
-## Quick Start & Documentation
-
-[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
-
-## Generate your first application
-
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
-
-## Development server
-
-Run `ng serve --project=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name --project=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build --project=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Design Choices
+The target was to create an application to showcase certain features while being easy to develop.  I chose to use Nx (https://nrwl.io/) which extends Angular CLI to generate opinionated enterprise boilerplate.  In particular, it makes it easy to add Ngrx (which requires a lot of code), and also I wanted to try it out.  I also used angular2-mdl (https://github.com/mseemann/angular2-mdl), which is an Angular implementation of MDL.  It was pretty complete and bug-free throughout my usage in this project, so fortunately I didn't have to do much with MDL itself.  For persistent storage, I used LocalStorage and SessionStorage because they are globally available, so it's easy to use.  I didn't use a mock DB because I am not familiar with any and strays a little too far from original requirements.
